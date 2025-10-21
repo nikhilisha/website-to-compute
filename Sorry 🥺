@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I'm Sorry Ishhuuuu 💗</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(to bottom right, #ffe0ef, #ffd6e8);
+    color: #ff4b81;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  h1, h2 {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 2.4em;
+    animation: glow 2s infinite alternate;
+  }
+
+  h2 {
+    font-size: 1.4em;
+    max-width: 600px;
+    line-height: 1.5;
+    margin-top: 20px;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 10px #fff, 0 0 20px #ff4b81; }
+    to { text-shadow: 0 0 30px #ff80ab, 0 0 60px #ff4b81; }
+  }
+
+  img.sticker {
+    width: 90px;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .next-btn {
+    margin-top: 25px;
+    font-size: 2em;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .next-btn:hover {
+    transform: scale(1.3);
+  }
+
+  .sparkle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ffb6c1, 0 0 20px #ff4b81;
+    animation: sparkleAnim 5s linear infinite;
+  }
+
+  @keyframes sparkleAnim {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-800px) scale(0.3); opacity: 0; }
+  }
+
+  .heart {
+    position: absolute;
+    color: #ff4b81;
+    font-size: 22px;
+    animation: floatHeart 2s ease-out forwards;
+  }
+
+  @keyframes floatHeart {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-100px) scale(2); opacity: 0; }
+  }
+
+  button {
+    background: #ff80ab;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background: #ff4b81;
+    transform: scale(1.1);
+  }
+
+  footer {
+    padding: 20px;
+    font-size: 1em;
+    color: #ff4b81;
+    background: #fff0f6;
+  }
+</style>
+</head>
+<body>
+
+<!-- 🌸 Page 1 -->
+<section id="page1">
+  <h1>I'm Sorry, My Love Ishhuuuu 💗</h1>
+  <img class="sticker" src="https://cdn-icons-png.flaticon.com/512/616/616556.png" alt="teddy">
+  <h2>My heart feels empty without your smile...  
+  Please forgive your silly love 🥺</h2>
+  <div class="next-btn" onclick="goNext('page2')">💌💝</div>
+</section>
+
+<!-- 🌷 Page 2 -->
+<section id="page2">
+  <img class="sticker" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="heart">
+  <h2>Every heartbeat whispers your name, Ishhuuuu 💕  
+  I promise to be the reason behind your happiness again.</h2>
+  <div class="next-btn" onclick="goNext('page3')">💌💝</div>
+</section>
+
+<!-- 🧸 Page 3 -->
+<section id="page3">
+  <img class="sticker" src="https://cdn-icons-png.flaticon.com/512/616/616430.png" alt="love letter">
+  <h2>I’m sorry for the moments I made you sad,  
+  but I’ll spend forever making you smile again 🌸</h2>
+  <div class="next-btn" onclick="goNext('page4')">💌💝</div>
+</section>
+
+<!-- 💞 Page 4 -->
+<section id="page4">
+  <img class="sticker" src="https://cdn-icons-png.flaticon.com/512/616/616564.png" alt="couple">
+  <h2>You are my forever person, my peace, my home.  
+  I never want to see you upset again 💖</h2>
+  <button onclick="releaseHearts()">💞 Forgive Me Ishhuuuu 💞</button>
+</section>
+
+<footer>Made with infinite love by You 💗</footer>
+
+<!-- 🎶 Background Music -->
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2023/02/28/audio_eb87c7f63e.mp3?filename=romantic-piano-background-music-139619.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const music = document.getElementById("bgMusic");
+  music.volume = 0.2;
+
+  // 🌸 Floating sparkles
+  function createSparkle() {
+    const sparkle = document.createElement('div');
+    sparkle.classList.add('sparkle');
+    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+    sparkle.style.bottom = '0px';
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 5000);
+  }
+  setInterval(createSparkle, 250);
+
+  // 💗 Floating hearts
+  function heartFlow(x, y) {
+    for (let i = 0; i < 15; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = '💗';
+      heart.style.left = (x + Math.random() * 60 - 30) + 'px';
+      heart.style.top = (y + Math.random() * 20 - 10) + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 2000);
+    }
+  }
+
+  // 💌 Page transition + heart burst + music fade
+  function goNext(nextId) {
+    const nextPage = document.getElementById(nextId);
+    const rect = nextPage.getBoundingClientRect();
+    heartFlow(window.innerWidth / 2, window.innerHeight / 2);
+    fadeMusicInOut();
+    setTimeout(() => {
+      nextPage.scrollIntoView({ behavior: "smooth" });
+    }, 400);
+  }
+
+  // 💞 Forgive Me button
+  function releaseHearts() {
+    heartFlow(window.innerWidth / 2, window.innerHeight / 2);
+    fadeMusicInOut(true);
+    alert("Awww 🥺 Ishhuuuu forgave you 💖💞");
+  }
+
+  // 🎵 Music fade in/out
+  let fading = false;
+  function fadeMusicInOut(final = false) {
+    if (fading) return;
+    fading = true;
+    let volume = music.volume;
+    const fadeOut = setInterval(() => {
+      if (volume > 0.02) {
+        volume -= 0.02;
+        music.volume = volume;
+      } else {
+        clearInterval(fadeOut);
+        if (final) {
+          music.pause();
+        } else {
+          setTimeout(() => {
+            music.play();
+            const fadeIn = setInterval(() => {
+              if (volume < 0.2) {
+                volume += 0.02;
+                music.volume = volume;
+              } else {
+                clearInterval(fadeIn);
+                fading = false;
+              }
+            }, 100);
+          }, 400);
+        }
+      }
+    }, 100);
+  }
+
+  // 🎵 Start music on first touch (for mobile autoplay)
+  document.body.addEventListener('click', () => {
+    if (music.paused) music.play();
+  }, { once: true });
+</script>
+</body>
+</html>
